@@ -5,6 +5,10 @@
         "daterangepicker.js",
         "daterangepicker-bs3.css"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/startappdev/bootstrap-daterangepicker.git"
+    },
     "ignore": [
         "**/.*",
         "node_modules",
