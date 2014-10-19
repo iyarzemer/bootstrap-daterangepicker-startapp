@@ -107,14 +107,16 @@
             .on('change.daterangepicker', 'select.hourselect,select.minuteselect,select.ampmselect', $.proxy(this.updateTime, this));
 
         this.container.find('.ranges')
-            .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
-            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this))
             .on('click.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.showCalendars, this))
             .on('change.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsChanged, this))
             .on('keydown.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsKeydown, this))
-            .on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
-            .on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
+            .on('click.daterangepicker', 'li label', $.proxy(this.clickRange, this))
+            .on('mouseenter.daterangepicker', 'li label', $.proxy(this.enterRange, this))
             .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
+
+        this.container.find('.bottom-area')
+            .on('click.daterangepicker', 'button.applyBtn', $.proxy(this.clickApply, this))
+            .on('click.daterangepicker', 'button.cancelBtn', $.proxy(this.clickCancel, this));
 
         if (this.element.is('input')) {
             this.element.on({
@@ -350,10 +352,10 @@
                 var list = '<ul>';
                 var uiRadio;
                 for (range in this.ranges) {
-                    uiRadio = '<label class="ui-radio"><input name="date-range" type="radio" value="'+range+'"><span>'+ range +'</span></label>';
+                    uiRadio = '<label class="ui-radio"><span>'+ range +'</span></label>';
                     list += '<li>' + uiRadio + '</li>';
                 }
-                list += '<li><label class="ui-radio"><input name="date-range" type="radio" value="'+this.locale.customRangeLabel+'"><span>'+ this.locale.customRangeLabel +'</span></label></li>';
+                list += '<li><label class="ui-radio"><span>'+ this.locale.customRangeLabel +'</span></label></li>';
                 list += '</ul>';
                 this.container.find('.ranges ul').remove();
                 this.container.find('.ranges').prepend(list);
@@ -620,10 +622,10 @@
 
         enterRange: function (e) {
             // mouse pointer has entered a range label
-            var label = e.target.innerHTML;
+            var label = e.target.innerText;
             if (label == this.locale.customRangeLabel) {
                 this.updateView();
-            } else {
+            } else if (typeof label !== 'undefined' && label !== "") {
                 var dates = this.ranges[label];
                 this.container.find('input[name=daterangepicker_start]').val(dates[0].format(this.format));
                 this.container.find('input[name=daterangepicker_end]').val(dates[1].format(this.format));
@@ -674,11 +676,11 @@
         },
 
         clickRange: function (e) {
-            var label = e.target.innerHTML;
+            var label = e.target.innerText;
             this.chosenLabel = label;
             if (label == this.locale.customRangeLabel) {
                 this.showCalendars();
-            } else {
+            } else if (typeof label !== 'undefined' && label !== "") {
                 var dates = this.ranges[label];
 
                 this.startDate = dates[0];

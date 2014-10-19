@@ -125,11 +125,38 @@
     padding: 15px;
     cursor: pointer;
 }
+
+.daterangepicker .ranges li.active .ui-radio span:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 7px;
+    left: -15px;
+    background-color: #46d200;
+    border-radius: 50%;
+    display: block;
+}
+.daterangepicker .ranges li .ui-radio span:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-left: -20px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+
 .daterangepicker .ranges li:last-child {
     border: 0px
 }
 .daterangepicker .ranges li label.ui-radio {
     margin: 0 0 0 20px;
+    color: #ccc;
 }
 
 .daterangepicker .ranges li.active .ui-radio span, .daterangepicker .ranges li:hover .ui-radio span {
