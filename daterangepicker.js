@@ -110,8 +110,8 @@
             .on('click.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.showCalendars, this))
             .on('change.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsChanged, this))
             .on('keydown.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsKeydown, this))
-            .on('click.daterangepicker', 'li label', $.proxy(this.clickRange, this))
-            .on('mouseenter.daterangepicker', 'li label', $.proxy(this.enterRange, this))
+            .on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
+            .on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
             .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
 
         this.container.find('.bottom-area')
@@ -674,12 +674,22 @@
                 this.element.val(this.endDate.format(this.format));
             }
         },
+        setActiveRange: function(target) {
+            $(target).closest('.ranges ul').find('li').removeClass('active');
 
+            if ($(target).parents('li').length) {
+                $(target).parents('li').addClass('active');
+            } else {
+                $(target).addClass('active');
+            }
+        },
         clickRange: function (e) {
             var label = e.target.innerText;
             this.chosenLabel = label;
             if (label == this.locale.customRangeLabel) {
                 this.showCalendars();
+                this.setActiveRange(e.target);
+
             } else if (typeof label !== 'undefined' && label !== "") {
                 var dates = this.ranges[label];
 
@@ -697,9 +707,9 @@
 
                 this.updateInputText();
 
-                this.hideCalendars();
-                this.hide();
-                this.element.trigger('apply.daterangepicker', this);
+//                this.hideCalendars();
+//                this.hide();
+//                this.element.trigger('apply.daterangepicker', this);
             }
         },
 
