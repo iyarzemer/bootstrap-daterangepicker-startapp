@@ -1,6 +1,6 @@
-# Date Range Picker for Bootstrap
+# Date Range Picker for Bootstrap - Special design for Startapp.com portals
 
-<a href="http://imgur.com/3G70FO4"><img src="http://i.imgur.com/3G70FO4.png" title="source: imgur.com" /></a>
+![Imgur](http://i.imgur.com/3G70FO4.png)
 
 This date range picker component for Bootstrap creates a dropdown menu from which a user can
 select a range of dates. I created it while building the UI for [Improvely](http://www.improvely.com), 
