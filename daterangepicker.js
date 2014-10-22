@@ -106,10 +106,12 @@
             .on('change.daterangepicker', 'select.monthselect', $.proxy(this.updateMonthYear, this))
             .on('change.daterangepicker', 'select.hourselect,select.minuteselect,select.ampmselect', $.proxy(this.updateTime, this));
 
+        this.container.find('.range_inputs')
+            //.on('click.daterangepicker', 'input[name=daterangepicker_start], input[name=daterangepicker_end]', $.proxy(this.showCalendars, this))
+            .on('change.daterangepicker', 'input[name=daterangepicker_start], input[name=daterangepicker_end]', $.proxy(this.inputsChanged, this))
+            .on('keydown.daterangepicker', 'input[name=daterangepicker_start], input[name=daterangepicker_end]', $.proxy(this.inputsKeydown, this));
+
         this.container.find('.ranges')
-            .on('click.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.showCalendars, this))
-            .on('change.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsChanged, this))
-            .on('keydown.daterangepicker', '.daterangepicker_start_input,.daterangepicker_end_input', $.proxy(this.inputsKeydown, this))
             .on('click.daterangepicker', 'li', $.proxy(this.clickRange, this))
             .on('mouseenter.daterangepicker', 'li', $.proxy(this.enterRange, this))
             .on('mouseleave.daterangepicker', 'li', $.proxy(this.updateFormInputs, this));
