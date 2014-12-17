@@ -705,7 +705,7 @@
 
                 this.leftCalendar.month.month(this.startDate.month()).year(this.startDate.year()).hour(this.startDate.hour()).minute(this.startDate.minute());
                 this.rightCalendar.month.month(this.endDate.month()).year(this.endDate.year()).hour(this.endDate.hour()).minute(this.endDate.minute());
-                this.updateCalendars();
+                this.updateCalendars(false);
 
                 this.updateInputText();
 
@@ -758,7 +758,7 @@
             this.endDate = endDate;
 
             this.updateView();
-            this.updateCalendars();
+            this.updateCalendars(true);
         },
 
         clickDate: function (e) {
@@ -870,14 +870,13 @@
             this.updateCalendars();
         },
 
-        updateCalendars: function () {
+        updateCalendars: function (custom) {
             this.leftCalendar.calendar = this.buildCalendar(this.leftCalendar.month.month(), this.leftCalendar.month.year(), this.leftCalendar.month.hour(), this.leftCalendar.month.minute(), 'left');
             this.rightCalendar.calendar = this.buildCalendar(this.rightCalendar.month.month(), this.rightCalendar.month.year(), this.rightCalendar.month.hour(), this.rightCalendar.month.minute(), 'right');
             this.container.find('.calendar.left').empty().html(this.renderCalendar(this.leftCalendar.calendar, this.startDate, this.minDate, this.maxDate));
             this.container.find('.calendar.right').empty().html(this.renderCalendar(this.rightCalendar.calendar, this.endDate, this.singleDatePicker ? this.minDate : this.startDate, this.maxDate));
-
+            var customRange = (typeof custom!== 'undefined') ? custom: this.container.find('.ranges li:last').hasClass('active');
             this.container.find('.ranges li').removeClass('active');
-            var customRange = true;
             var i = 0;
             for (var range in this.ranges) {
                 if (this.timePicker) {
@@ -888,8 +887,7 @@
                     }
                 } else {
                     //ignore times when comparing dates if time picker is not enabled
-                    if (this.startDate.format('YYYY-MM-DD') == this.ranges[range][0].format('YYYY-MM-DD') && this.endDate.format('YYYY-MM-DD') == this.ranges[range][1].format('YYYY-MM-DD')) {
-                        customRange = false;
+                    if (!customRange && this.startDate.format('YYYY-MM-DD') == this.ranges[range][0].format('YYYY-MM-DD') && this.endDate.format('YYYY-MM-DD') == this.ranges[range][1].format('YYYY-MM-DD')) {
                         this.chosenLabel = this.container.find('.ranges li:eq(' + i + ')')
                             .addClass('active').html();
                     }
