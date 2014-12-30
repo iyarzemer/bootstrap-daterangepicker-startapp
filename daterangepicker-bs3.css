@@ -12,6 +12,19 @@
     max-width: none;
     z-index: 3000;
     padding: 0;
+
+}
+
+@media screen and (max-width: 767px) {
+    .daterangepicker.dropdown-menu {
+        margin-top: 12px;
+    }
+    .bottom-area .cancelBtn{
+        display: none;
+    }
+    .bottom-area .applyBtn{
+        width: 100%;
+    }
 }
 
 .daterangepicker.opensleft .ranges, .daterangepicker.opensleft .calendar {
@@ -30,6 +43,20 @@
 .daterangepicker .ranges {
     width: 160px;
     text-align: left;
+}
+
+@media screen and (max-width: 767px) {
+    .daterangepicker .ranges {
+        width: 100%;
+    }
+
+    .daterangepicker .ranges ul li {
+        margin-left: 12px;
+    }
+
+    .daterangepicker .ranges ul li:last-child {
+        display: none;
+    }
 }
 
 .daterangepicker .calendar {
@@ -52,19 +79,22 @@
     text-align: center;
     min-width: 32px;
 }
+
 .daterangepicker .top {
     margin: 15px auto 0;
     overflow: hidden;
 }
+
 .daterangepicker .top .range_inputs {
     width: 80%;
     margin: 0 auto;
 }
-.daterangepicker .top .range_inputs>div {
+
+.daterangepicker .top .range_inputs > div {
     float: left;
 }
 
-.daterangepicker .top .range_inputs>div:nth-child(2) {
+.daterangepicker .top .range_inputs > div:nth-child(2) {
     padding-left: 11px;
 }
 
@@ -73,6 +103,7 @@
     width: 46%;
     margin: 0 2%;
 }
+
 .daterangepicker .daterangepicker_start_input label,
 .daterangepicker .daterangepicker_end_input label {
     color: #333;
@@ -84,9 +115,9 @@
     float: left;
     width: 40%;
 }
+
 .daterangepicker .daterangepicker_start_input input,
-.daterangepicker .daterangepicker_end_input input
-{
+.daterangepicker .daterangepicker_end_input input {
     width: 60%;
     border-color: transparent;
     border-width: 0;
@@ -137,6 +168,7 @@
     border-radius: 50%;
     display: block;
 }
+
 .daterangepicker .ranges li .ui-radio span:before {
     content: "";
     width: 18px;
@@ -150,10 +182,10 @@
     border: 1px solid #ccc;
 }
 
-
 .daterangepicker .ranges li:last-child {
     border: 0px
 }
+
 .daterangepicker .ranges li label.ui-radio {
     margin: 0 0 0 20px;
     color: #ccc;
@@ -210,27 +242,29 @@
     content: '';
 }
 
-.daterangepicker.opensright:before {
-    position: absolute;
-    top: -7px;
-    left: 9px;
-    display: inline-block;
-    border-right: 7px solid transparent;
-    border-bottom: 7px solid #ccc;
-    border-left: 7px solid transparent;
-    border-bottom-color: rgba(0, 0, 0, 0.2);
-    content: '';
-}
+@media screen and (min-width: 767px) {
+    .daterangepicker.opensright:before {
+        position: absolute;
+        top: -7px;
+        left: 9px;
+        display: inline-block;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #ccc;
+        border-left: 7px solid transparent;
+        border-bottom-color: rgba(0, 0, 0, 0.2);
+        content: '';
+    }
 
-.daterangepicker.opensright:after {
-    position: absolute;
-    top: -6px;
-    left: 10px;
-    display: inline-block;
-    border-right: 6px solid transparent;
-    border-bottom: 6px solid #fff;
-    border-left: 6px solid transparent;
-    content: '';
+    .daterangepicker.opensright:after {
+        position: absolute;
+        top: -6px;
+        left: 10px;
+        display: inline-block;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #fff;
+        border-left: 6px solid transparent;
+        content: '';
+    }
 }
 
 .daterangepicker table {
@@ -264,7 +298,7 @@
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
-    color:#fff;
+    color: #fff;
 }
 
 .daterangepicker td.start-date {
@@ -318,7 +352,10 @@
     padding-left: 11px
 }
 
-.daterangepicker th {color:#000}
+.daterangepicker th {
+    color: #000
+}
+
 .daterangepicker th.month {
     width: auto;
 }
@@ -326,8 +363,13 @@
 .daterangepicker .bottom-area {
     width: 100%;
     clear: both;
-    padding: 10px;
-    text-align: right;
-    background: #e7e7e7;
-    border-top: 1px solid #ccc;
+    padding: 20px 20px 0;
+}
+@media screen and (min-width: 767px) {
+    .daterangepicker .bottom-area{
+        text-align: right;
+        padding: 10px;
+        background: #e7e7e7;
+        border-top: 1px solid #ccc;
+    }
 }
