@@ -624,7 +624,7 @@
 
         enterRange: function (e) {
             // mouse pointer has entered a range label
-            var label = e.target.innerText;
+            var label = e.target.innerText || e.target.textContent;
             if (label == this.locale.customRangeLabel) {
                 this.updateView();
             } else if (typeof label !== 'undefined' && label !== "") {
@@ -686,7 +686,7 @@
             }
         },
         clickRange: function (e) {
-            var label = e.target.innerText;
+            var label = e.target.innerText || e.target.textContent;
             this.chosenLabel = label;
             if (label == this.locale.customRangeLabel) {
                 this.showCalendars();
