@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-daterangepicker-startapp",
-    "version": "1.4.13",
+    "version": "1.4.14",
     "main": [
         "daterangepicker.js",
         "daterangepicker-bs3.css"
