@@ -45,8 +45,9 @@
         this.isShowing = false;
 
         //create the picker HTML object
+        //ui-update-by-noa
         var DRPTemplate = '<div class="daterangepicker dropdown-menu">' +
-            '<div class="pull-right hidden-xs">'+
+            '<div class="callendars-wrapper pull-right hidden-xs">'+
             '<div class="top">'+
             '<div class="range_inputs">' +
             '<div class="daterangepicker_start_input form-control">' +
@@ -597,7 +598,7 @@
                 target.closest(this.element).length ||
                 target.closest(this.container).length ||
                 target.closest('.calendar-date').length
-                ) return;
+            ) return;
             this.hide();
         },
 
@@ -955,8 +956,8 @@
             for (var m = 0; m < 12; m++) {
                 if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
                     monthHtml += "<option value='" + m + "'" +
-                        (m === currentMonth ? " selected='selected'" : "") +
-                        ">" + this.locale.monthNames[m] + "</option>";
+                    (m === currentMonth ? " selected='selected'" : "") +
+                    ">" + this.locale.monthNames[m] + "</option>";
                 }
             }
             monthHtml += "</select>";
@@ -968,8 +969,8 @@
 
             for (var y = minYear; y <= maxYear; y++) {
                 yearHtml += '<option value="' + y + '"' +
-                    (y === currentYear ? ' selected="selected"' : '') +
-                    '>' + y + '</option>';
+                (y === currentYear ? ' selected="selected"' : '') +
+                '>' + y + '</option>';
             }
 
             yearHtml += '</select>';
