@@ -170,7 +170,7 @@
                 fromLabel: 'From:',
                 toLabel: 'To:',
                 weekLabel: 'W',
-                customRangeLabel: 'Customize',
+                customRangeLabel: 'Custom',
                 daysOfWeek: moment.weekdaysMin(),
                 monthNames: moment.monthsShort(),
                 firstDay: moment.localeData()._week.dow
